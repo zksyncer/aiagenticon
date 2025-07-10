@@ -953,19 +953,46 @@
             document.getElementById('paymentModal').style.display = 'none';
         }
 
-        function processPayment() {
-            // Get form data
-            const email = document.getElementById('email').value;
-            const cardNumber = document.getElementById('cardNumber').value;
-            const expiry = document.getElementById('expiry').value;
-            const cvv = document.getElementById('cvv').value;
-            const name = document.getElementById('name').value;
-            
-            // Basic validation
-            if (!email || !cardNumber || !expiry || !cvv || !name) {
-                alert('Please fill in all payment details.');
-                return;
-            }
+        async function processPayment() {
+    const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value;
+
+    if (!email || !name || !email.includes('@')) {
+        alert('Please enter a valid email and name.');
+        return;
+    }
+
+    const btn = document.querySelector('.payment-btn');
+    btn.innerHTML = 'Redirecting... <span class="loading"></span>';
+    btn.disabled = true;
+
+    try {
+        const response = await fetch('/.netlify/functions/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                package: currentPackage,
+                email,
+                name
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.sessionId) {
+            await stripe.redirectToCheckout({ sessionId: data.sessionId });
+        } else {
+            alert('Checkout failed. Please try again.');
+        }
+    } catch (error) {
+        console.error(error);
+        alert('An error occurred. Please try again.');
+    } finally {
+        btn.innerHTML = `Complete Payment - ${packages[currentPackage].price}`;
+        btn.disabled = false;
+    }
+}
+
             
             if (!email.includes('@')) {
                 alert('Please enter a valid email address.');
