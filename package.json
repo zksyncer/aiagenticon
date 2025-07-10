@@ -1,0 +1,15 @@
+{
+  "name": "aiagenticon",
+  "version": "1.0.0",
+  "description": "AI Agent Icon marketplace with Stripe payments",
+  "main": "index.html",
+  "dependencies": {
+    "stripe": "^12.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ai", "icons", "stripe", "payments"],
+  "author": "John",
+  "license": "MIT"
+}
