@@ -822,6 +822,19 @@
         </div>
     </div>
 
+     <script>
+        // YOUR STRIPE PUBLISHABLE KEY
+        const STRIPE_PUBLISHABLE_KEY = 'pk_live_51RCp5xBtszgKq8u39gO8T631t79vaYwzxea6gdmUE0R26j4HCnQ3cuNCA5aVqzCUXHyYhhbsJiU0SLlAwSld02L500QDLOqvkv';
+        const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+
+        // YOUR STRIPE PRICE IDs
+        const STRIPE_PRICES = {
+            'premium': 'price_1RjNRMBtszgKq8u3pfoQZ9bB',     // $29
+            'custom': 'price_1RjNTjBtszgKq8u35MxVNouI',      // $49
+            'enterprise': 'price_1RjNURBtszgKq8u32LzpEZ0M'   // $199
+        };
+    </script>
+    
     <script>
         // Particle background animation
         function createParticles() {
