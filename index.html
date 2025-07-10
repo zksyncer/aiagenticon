@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Icon - Premium AI Icons & Custom Generation</title>
+    <meta name="description" content="Download premium AI agent icons or generate custom AI icons instantly. Perfect for apps, websites, and branding. Free and premium options available.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        .product-content {
+            padding: 30px;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .buy-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Generator Section */
+        .generator {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .generator h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .generator-tool {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .generated-preview {
+            margin-top: 30px;
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            border: 2px dashed #ddd;
+            display: none;
+        }
+
+        .generated-preview.active {
+            display: block;
+        }
+
+        .preview-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .payment-form {
+            margin-top: 20px;
+        }
+
+        .payment-form h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-row input {
+            flex: 1;
+        }
+
+        .payment-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: particleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">AI Agent Icon</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#generator">Generator</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#products" class="cta-btn">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="particles"></div>
+            <div class="container">
+                <h1 class="floating">Premium AI Agent Icons</h1>
+                <p>Create stunning AI agent icons instantly. Download premium collections or generate custom icons with our AI-powered tools.</p>
+                <div class="hero-buttons">
+                    <a href="#generator" class="btn-primary">Generate Free Icon</a>
+                    <a href="#products" class="btn-secondary">Browse Collections</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Why Choose AI Agent Icon?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Powered Generation</h3>
+                        <p>Create unique AI agent icons from simple text descriptions using our advanced AI technology.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Instant Download</h3>
+                        <p>Get high-quality icons in multiple formats (PNG, SVG, ICO) ready for immediate use.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Premium Collections</h3>
+                        <p>Access curated collections of professional AI agent icons designed by expert designers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3>Commercial License</h3>
+                        <p>Use our icons in commercial projects with full licensing rights included.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Multi-Platform Ready</h3>
+                        <p>Perfect for websites, mobile apps, presentations, and marketing materials.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Customizable</h3>
+                        <p>Edit colors, sizes, and styles to match your brand perfectly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <div class="container">
+                <h2>Our Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">🤖</div>
+                        <div class="product-content">
+                            <h3>Free AI Icon Pack</h3>
+                            <p>Get started with 10 high-quality AI agent icons. Perfect for personal projects and testing.</p>
+                            <div class="price">Free</div>
+                            <button class="buy-btn" onclick="downloadFree()">Download Free</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">⭐</div>
+                        <div class="product-content">
+                            <h3>Premium Collection</h3>
+                            <p>100 professional AI agent icons in multiple styles. Includes source files and commercial license.</p>
+                            <div class="price">$29</div>
+                            <button class="buy-btn" onclick="openPayment('premium')">Buy Now</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🚀</div>
+                        <div class="product-content">
+                            <h3>Custom Icon Generation</h3>
+                            <p>Unlimited custom AI icon generation for 30 days. Create exactly what you need.</p>
+                            <div class="price">$49</div>
+                            <button class="buy-btn" onclick="openPayment('custom')">Get Access</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">💎</div>
+                        <div class="product-content">
+                            <h3>Enterprise Package</h3>
+                            <p>Complete icon library + unlimited generation + custom designs. Perfect for teams.</p>
+                            <div class="price">$199</div>
+                            <button class="buy-btn" onclick="openPayment('enterprise')">Contact Sales</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="generator" class="generator">
+            <div class="container">
+                <h2>AI Icon Generator</h2>
+                <div class="generator-tool">
+                    <div class="input-group">
+                        <label for="iconDescription">Describe your AI agent icon:</label>
+                        <textarea id="iconDescription" rows="3" placeholder="e.g., Futuristic robot head with blue glowing eyes, minimal design, tech style"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="iconStyle">Style:</label>
+                        <select id="iconStyle">
+                            <option value="minimal">Minimal</option>
+                            <option value="3d">3D</option>
+                            <option value="flat">Flat Design</option>
+                            <option value="outline">Outline</option>
+                            <option value="gradient">Gradient</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="iconColor">Primary Color:</label>
+                        <input type="color" id="iconColor" value="#667eea">
+                    </div>
+                    <button class="generate-btn" onclick="generateIcon()">
+                        <span id="generateText">Generate Icon</span>
+                        <span id="generateLoading" class="loading" style="display: none;"></span>
+                    </button>
+                    
+                    <div id="generatedPreview" class="generated-preview">
+                        <div class="preview-icon">🤖</div>
+                        <h3>Your AI Agent Icon</h3>
+                        <p>Icon generated successfully! Download now or generate another variation.</p>
+                        <button class="buy-btn" onclick="downloadGenerated()">Download (Free)</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI Agent Icon</h3>
+                    <p>Creating the future of AI visual design, one icon at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#products">Free Icons</a></li>
+                        <li><a href="#products">Premium Collections</a></li>
+                        <li><a href="#generator">Icon Generator</a></li>
+                        <li><a href="#products">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">License Terms</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Agent Icon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePayment()">&times;</span>
+            <h2 id="paymentTitle">Complete Purchase</h2>
+            <p id="paymentDescription">You're purchasing the Premium Collection package.</p>
+            
+            <div class="payment-form">
+                <h3>Payment Details</h3>
+                <div class="input-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="expiry">Expiry:</label>
+                        <input type="text" id="expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" placeholder="123" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="name">Cardholder Name:</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <button class="payment-btn" onclick="processPayment()">
+                    Complete Payment - <span id="paymentAmount">$29</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Particle background animation
+        function createParticles() {
+            const particles = document.querySelector('.particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Icon generator functionality
+        function generateIcon() {
+            const description = document.getElementById('iconDescription').value;
+            const style = document.getElementById('iconStyle').value;
+            const color = document.getElementById('iconColor').value;
+            
+            if (!description.trim()) {
+                alert('Please describe your icon first!');
+                return;
+            }
+
+            // Show loading state
+            document.getElementById('generateText').style.display = 'none';
+            document.getElementById('generateLoading').style.display = 'inline-block';
+            
+            // Simulate AI generation (replace with actual API call)
+            setTimeout(() => {
+                // Hide loading state
+                document.getElementById('generateText').style.display = 'inline';
+                document.getElementById('generateLoading').style.display = 'none';
+                
+                // Show preview
+                const preview = document.getElementById('generatedPreview');
+                const previewIcon = preview.querySelector('.preview-icon');
+                
+                // Customize preview based on inputs
+                previewIcon.style.background = `linear-gradient(45deg, ${color}, #764ba2)`;
+                
+                // Different icons based on style
+                const styleIcons = {
+                    'minimal': '🤖',
+                    '3d': '🚀',
+                    'flat': '⚡',
+                    'outline': '🎯',
+                    'gradient': '💎'
+                };
+                previewIcon.textContent = styleIcons[style] || '🤖';
+                
+                preview.classList.add('active');
+                preview.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        // Download functions
+        function downloadFree() {
+            // Simulate download
+            const link = document.createElement('a');
+            link.href = '#';
+            link.download = 'ai-agent-icons-free-pack.zip';
+            
+            // Show success message
+            alert('Free icon pack download started! Check your downloads folder.');
+            
+            // Track download (replace with actual analytics)
+            console.log('Free download initiated');
+        }
+
+        function downloadGenerated() {
+            // Simulate download of generated icon
+            const link = document.createElement('a');
+            link.href = '#';
+            link.download = 'custom-ai-agent-icon.png';
+            
+            alert('Icon downloaded successfully!');
+            console.log('Generated icon download');
+        }
+
+        // Payment system
+        let currentPackage = '';
+        const packages = {
+            'premium': { name: 'Premium Collection', price: '$29', description: 'You\'re purchasing the Premium Collection with 100 professional AI agent icons.' },
+            'custom': { name: 'Custom Generation', price: '$49', description: 'You\'re getting 30 days of unlimited custom AI icon generation.' },
+            'enterprise': { name: 'Enterprise Package', price: '$199', description: 'You\'re purchasing the complete Enterprise package with unlimited access.' }
+        };
+
+        function openPayment(packageType) {
+            currentPackage = packageType;
+            const pkg = packages[packageType];
+            
+            document.getElementById('paymentTitle').textContent = `Purchase ${pkg.name}`;
+            document.getElementById('paymentDescription').textContent = pkg.description;
+            document.getElementById('paymentAmount').textContent = pkg.price;
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function closePayment() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function processPayment() {
+            // Get form data
+            const email = document.getElementById('email').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            const name = document.getElementById('name').value;
+            
+            // Basic validation
+            if (!email || !cardNumber || !expiry || !cvv || !name) {
+                alert('Please fill in all payment details.');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Simulate payment processing
+            const btn = document.querySelector('.payment-btn');
+            btn.innerHTML = 'Processing... <span class="loading"></span>';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                alert(`Payment successful! You'll receive your ${packages[currentPackage].name} download link via email.`);
+                closePayment();
+                
+                // Reset form
+                document.getElementById('email').value = '';
+                document.getElementById('cardNumber').value = '';
+                document.getElementById('expiry').value = '';
+                document.getElementById('cvv').value = '';
+                document.getElementById('name').value = '';
+                
+                btn.innerHTML = `Complete Payment - ${packages[currentPackage].price}`;
+                btn.disabled = false;
+                
+                // Track successful purchase
+                console.log(`Successful purchase: ${currentPackage}`);
+            }, 3000);
+        }
+
+        // Format card number input
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            if (formattedValue !== e.target.value) {
+                e.target.value = formattedValue;
+            }
+        });
+
+        // Format expiry input
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // CVV input restriction
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('paymentModal');
+            if (e.target === modal) {
+                closePayment();
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .product-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Add some interactive hover effects
+            document.querySelectorAll('.feature-card, .product-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // FAQ or Help functionality (can be expanded)
+        function showHelp() {
+            alert('Need help? Contact us at support@aiagenticon.com or check our documentation for detailed guides on using our AI icon generator and premium collections.');
+        }
+
+        // Search functionality (for future expansion)
+        function searchIcons(query) {
+            console.log('Searching for:', query);
+            // This could be expanded to search through icon collections
+        }
+
+        // Newsletter signup (for future expansion)
+        function subscribeNewsletter(email) {
+            if (email && email.includes('@')) {
+                alert('Thanks for subscribing! You\'ll receive updates about new icon collections and features.');
+                console.log('Newsletter subscription:', email);
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        // Analytics tracking (replace with actual analytics service)
+        function trackEvent(category, action, label) {
+            console.log('Analytics:', { category, action, label });
+            // Replace with Google Analytics, Mixpanel, etc.
+        }
+
+        // Track user interactions
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                trackEvent('Purchase', 'Click', this.textContent);
+            });
+        });
+
+        document.getElementById('iconDescription').addEventListener('focus', function() {
+            trackEvent('Generator', 'Start', 'Description Input');
+        });
+    </script>
+</body>
+</html>
