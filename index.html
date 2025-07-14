@@ -53,25 +53,103 @@
             position: relative;
         }
 
-        .hero-robot {
-            width: 300px;
-            height: 300px;
+        .hero-visual {
+            width: 350px;
+            height: 350px;
             margin: 0 auto 40px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="robotGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234A90E2;stop-opacity:1" /><stop offset="50%" style="stop-color:%232A5298;stop-opacity:1" /><stop offset="100%" style="stop-color:%23764BA2;stop-opacity:1" /></linearGradient></defs><g transform="translate(50,50)"><ellipse cx="150" cy="250" rx="120" ry="80" fill="url(%23robotGrad)" stroke="%23000" stroke-width="3"/><ellipse cx="150" cy="180" rx="100" ry="90" fill="url(%23robotGrad)" stroke="%23000" stroke-width="3"/><circle cx="150" cy="130" r="70" fill="url(%23robotGrad)" stroke="%23000" stroke-width="3"/><ellipse cx="120" cy="115" rx="20" ry="25" fill="%2300BFFF" stroke="%23000" stroke-width="2"/><ellipse cx="180" cy="115" rx="20" ry="25" fill="%2300BFFF" stroke="%23000" stroke-width="2"/><circle cx="50" cy="130" r="25" fill="url(%23robotGrad)" stroke="%23000" stroke-width="3"/><circle cx="250" cy="130" r="25" fill="url(%23robotGrad)" stroke="%23000" stroke-width="3"/><rect x="140" y="140" width="20" height="15" fill="%23333" rx="3"/><circle cx="200" cy="80" r="15" fill="%23FFD700" stroke="%23000" stroke-width="2"/></g></svg>') center/contain no-repeat;
-            animation: float 6s ease-in-out infinite;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero-robot::before {
+        .ai-icon-showcase {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #2a5298, #764ba2, #4A90E2);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .ai-icon-showcase::before {
             content: '';
             position: absolute;
-            top: -30px;
-            left: -30px;
-            right: -30px;
-            bottom: -30px;
-            background: radial-gradient(circle, rgba(42, 82, 152, 0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 4s ease-in-out infinite;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #FFD700, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FECA57);
+            background-size: 400% 400%;
+            border-radius: 32px;
+            z-index: -1;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .ai-icon-showcase::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .ai-symbol {
+            font-size: 120px;
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255,215,0,0.5);
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(255,215,0,0.7));
+            }
+            to { 
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 30px rgba(255,215,0,1));
+            }
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: orbit 8s linear infinite;
+        }
+
+        .floating-icon:nth-child(1) { top: 10%; left: 80%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 80%; left: 20%; animation-delay: -2s; }
+        .floating-icon:nth-child(3) { top: 20%; right: 10%; animation-delay: -4s; }
+        .floating-icon:nth-child(4) { bottom: 20%; left: 10%; animation-delay: -6s; }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
         }
 
         @keyframes float {
@@ -412,14 +490,24 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container fade-in">
-                <div class="hero-robot"></div>
-                <div class="sale-status">🔥 Domain For Sale 🔥</div>
+                <div class="hero-visual">
+                    <div class="ai-icon-showcase">
+                        <div class="ai-symbol">🤖</div>
+                    </div>
+                    <div class="floating-icons">
+                        <div class="floating-icon">⚡</div>
+                        <div class="floating-icon">🧠</div>
+                        <div class="floating-icon">💎</div>
+                        <div class="floating-icon">🎯</div>
+                    </div>
+                </div>
+                <div class="sale-status">🔥 Premium Domain For Sale 🔥</div>
                 <h1>
                     <span class="domain-name">aiagenticon.com</span><br>
                     Is Available Now
                 </h1>
                 <p class="hero-subtitle">
-                    Secure this premium, exact-match domain perfect for AI, technology, and icon businesses. 
+                    Secure this premium, exact-match domain perfect for AI agents, technology platforms, and icon marketplaces. 
                     A rare opportunity to own a brandable domain in the fastest-growing tech sector.
                 </p>
             </div>
@@ -427,10 +515,11 @@
 
         <!-- Price Section -->
         <section class="price-section fade-in">
-            <div class="price">$10,000</div>
+            <div class="price">$25,000</div>
             <div class="price-label">Buy It Now Price</div>
             <div class="payment-options">
-                💳 Escrow.com • Wire Transfer • Cryptocurrency Accepted
+                💳 Escrow.com • Wire Transfer • Cryptocurrency Accepted<br>
+                <small style="margin-top: 10px; display: block; opacity: 0.8;">💡 Serious offers above $15,000 considered</small>
             </div>
         </section>
 
@@ -445,38 +534,38 @@
                 <div class="value-grid">
                     <div class="value-card fade-in">
                         <span class="value-icon">🤖</span>
-                        <h3>AI Market Leader</h3>
-                        <p>The AI industry is projected to reach $1.8 trillion by 2030. Position your brand at the forefront with a domain that screams artificial intelligence.</p>
+                        <h3>AI Agent Revolution</h3>
+                        <p>AI agents are the next frontier - from ChatGPT plugins to autonomous business tools. The "AI agent" keyword alone is worth thousands in this exploding $150B+ market.</p>
                     </div>
                     
                     <div class="value-card fade-in">
                         <span class="value-icon">🎯</span>
-                        <h3>Exact Match Keywords</h3>
-                        <p>Perfect SEO advantage with exact match for "AI agent icon" - a high-value keyword with growing search volume and commercial intent.</p>
+                        <h3>Triple Keyword Power</h3>
+                        <p>Combines "AI" + "Agent" + "Icon" - three high-value keywords in one domain. Perfect SEO advantage with exact match for premium commercial searches.</p>
                     </div>
                     
                     <div class="value-card fade-in">
                         <span class="value-icon">💎</span>
-                        <h3>Premium Brandability</h3>
-                        <p>Short, memorable, and brandable. Easy to spell, pronounce, and remember. Perfect for startups, agencies, and enterprise solutions.</p>
+                        <h3>Instant Authority & Trust</h3>
+                        <p>Launch with immediate credibility. Customers instantly understand your AI focus. Premium domains like this build trust and convert better than generic alternatives.</p>
                     </div>
                     
                     <div class="value-card fade-in">
                         <span class="value-icon">📈</span>
-                        <h3>High Commercial Value</h3>
-                        <p>Icon marketplaces, AI tools, and design platforms are billion-dollar industries. This domain taps into multiple high-value markets.</p>
+                        <h3>Multiple Revenue Streams</h3>
+                        <p>Perfect for AI tool platforms, icon marketplaces, SaaS products, agencies, or consulting. Multiple $100M+ markets converge in this single domain.</p>
                     </div>
                     
                     <div class="value-card fade-in">
                         <span class="value-icon">🚀</span>
-                        <h3>Future-Proof Investment</h3>
-                        <p>As AI becomes more visual and icon-based, this domain will only increase in value. Secure your piece of the AI revolution.</p>
+                        <h3>Appreciating Asset</h3>
+                        <p>AI domains have increased 300-500% in value since 2020. As AI agents become mainstream, this exact-match domain will be even more valuable.</p>
                     </div>
                     
                     <div class="value-card fade-in">
-                        <span class="value-icon">🔒</span>
-                        <h3>Instant Authority</h3>
-                        <p>Launch with immediate credibility and trust. Customers will instantly understand your AI and design focus from the domain alone.</p>
+                        <span class="value-icon">🏆</span>
+                        <h3>Competitive Advantage</h3>
+                        <p>Block competitors from owning the perfect domain for AI agent icons. First-mover advantage in branding that money can't buy later.</p>
                     </div>
                 </div>
             </div>
@@ -516,7 +605,7 @@
                         Contact me directly to discuss the purchase or make an offer.
                     </p>
                     
-                    <a href="mailto:johnalewine@gmail.com?subject=Interest in aiagenticon.com - $10,000 Domain&body=Hi John,%0D%0A%0D%0AI'm interested in purchasing aiagenticon.com for $10,000.%0D%0A%0D%0APlease let me know the next steps.%0D%0A%0D%0AThank you!" class="email-link">
+                    <a href="mailto:johnalewine@gmail.com?subject=Interest in aiagenticon.com - $25,000 Premium Domain&body=Hi John,%0D%0A%0D%0AI'm interested in purchasing aiagenticon.com for $25,000.%0D%0A%0D%0APlease let me know the next steps for a secure transaction.%0D%0A%0D%0AThank you!" class="email-link">
                         📧 johnalewine@gmail.com
                     </a>
                     
@@ -529,7 +618,8 @@
                         <strong>Serious inquiries only.</strong><br>
                         Fast response within 24 hours. Secure transaction via Escrow.com.
                         <br><br>
-                        <small>💡 Open to reasonable offers above $8,000</small>
+                        <small>💡 Reasonable offers above $15,000 considered</small>
+                        <br><small>🏆 Comparable AI domains recently sold for $30K-75K+</small>
                     </div>
                 </div>
             </div>
